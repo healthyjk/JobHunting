@@ -1,0 +1,86 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BTreeNode	BTreeNode.h	/^		BTreeNode() {$/;"	f	class:BTreeNode
+BTreeNode	BTreeNode.h	/^		BTreeNode(T tVal){$/;"	f	class:BTreeNode
+BTreeNode	BTreeNode.h	/^class BTreeNode {$/;"	c
+BinaryTree	BinaryTree.hpp	/^BinaryTree<T>::BinaryTree() {$/;"	f	class:BinaryTree
+BinaryTree	BinaryTree.hpp	/^class BinaryTree {$/;"	c
+Huffman	huffman.cpp	/^class Huffman {$/;"	c	file:
+MAX	activity-select.cpp	23;"	d	file:
+MaxHeap	maxHeap.cpp	/^MaxHeap::MaxHeap(int heapsize) {$/;"	f	class:MaxHeap
+MaxHeap	maxHeap.cpp	/^MaxHeap::MaxHeap(int size, int heapsize) {$/;"	f	class:MaxHeap
+MaxHeap	maxHeap.cpp	/^MaxHeap::MaxHeap(int* array, int len) {$/;"	f	class:MaxHeap
+MaxHeap	maxHeap.h	/^class MaxHeap {$/;"	c
+MinHeap	minHeap.hpp	/^MinHeap<T>::MinHeap() {$/;"	f	class:MinHeap
+MinHeap	minHeap.hpp	/^MinHeap<T>::MinHeap(T* array, int len) {$/;"	f	class:MinHeap
+MinHeap	minHeap.hpp	/^MinHeap<T>::MinHeap(int heapsize) {$/;"	f	class:MinHeap
+MinHeap	minHeap.hpp	/^MinHeap<T>::MinHeap(int size, int heapsize) {$/;"	f	class:MinHeap
+MinHeap	minHeap.hpp	/^class MinHeap {$/;"	c
+_MAX_HEAP_	maxHeap.h	21;"	d
+_array	maxHeap.h	/^		int* _array;$/;"	m	class:MaxHeap
+_array	minHeap.hpp	/^		T* _array;$/;"	m	class:MinHeap
+_heapsize	maxHeap.h	/^		int _heapsize;$/;"	m	class:MaxHeap
+_heapsize	minHeap.hpp	/^		int _heapsize;$/;"	m	class:MinHeap
+_root	BinaryTree.hpp	/^		BTreeNode<T>* _root;$/;"	m	class:BinaryTree
+_size	maxHeap.h	/^		int _size;$/;"	m	class:MaxHeap
+_size	minHeap.hpp	/^		int _size;$/;"	m	class:MinHeap
+buildMaxHeap	maxHeap.cpp	/^void MaxHeap::buildMaxHeap() { $/;"	f	class:MaxHeap
+buildMinHeap	minHeap.hpp	/^void MinHeap<T>::buildMinHeap() { $/;"	f	class:MinHeap
+buildTree	BinaryTree.hpp	/^void BinaryTree<T>::buildTree(T val, BinaryTree<T> leftTree, BinaryTree<T> rightTree) {$/;"	f	class:BinaryTree
+change	BinaryTree.hpp	/^void BinaryTree<T>::change(BTreeNode<T> *root) {$/;"	f	class:BinaryTree
+destory	BinaryTree.hpp	/^void BinaryTree<T>::destory() {$/;"	f	class:BinaryTree
+destoryTree	BinaryTree.hpp	/^void BinaryTree<T>::destoryTree(BTreeNode<T>* root) {$/;"	f	class:BinaryTree
+dynamicActivitySelector	activity-select.cpp	/^void dynamicActivitySelector(int* S, int n, int* start, int* end, vector<int>& A) {$/;"	f
+extractMin	minHeap.hpp	/^T MinHeap<T>::extractMin() {$/;"	f	class:MinHeap
+filterUp	minHeap.hpp	/^void MinHeap<T>::filterUp(const int index) {$/;"	f	class:MinHeap
+getMin	minHeap.hpp	/^T MinHeap<T>::getMin() {$/;"	f	class:MinHeap
+greedyActivitySelector	activity-select.cpp	/^void greedyActivitySelector(int* S, int n, int* start, int* end, vector<int>& A) {$/;"	f
+heapsize	maxHeap.h	/^		int heapsize() { return _heapsize; }$/;"	f	class:MaxHeap
+heapsize	minHeap.hpp	/^		int heapsize() { return _heapsize; }$/;"	f	class:MinHeap
+height	BinaryTree.hpp	/^int BinaryTree<T>::height() const {$/;"	f	class:BinaryTree
+huffmanTree	huffman.cpp	/^BinaryTree<int> huffmanTree(T freq[], int n) {$/;"	f
+inOrder	BinaryTree.hpp	/^void BinaryTree<T>::inOrder() {$/;"	f	class:BinaryTree
+inOrderTree	BinaryTree.hpp	/^void BinaryTree<T>::inOrderTree(BTreeNode<T>* root) {$/;"	f	class:BinaryTree
+insert	minHeap.hpp	/^bool MinHeap<T>::insert(const T& x) {$/;"	f	class:MinHeap
+isEmpty	minHeap.hpp	/^bool MinHeap<T>::isEmpty() const {$/;"	f	class:MinHeap
+isFull	minHeap.hpp	/^bool MinHeap<T>::isFull() const {$/;"	f	class:MinHeap
+left	BTreeNode.h	/^		BTreeNode<T>* left; \/\/指向左孩子的指针$/;"	m	class:BTreeNode
+main	activity-select.cpp	/^int main() {$/;"	f
+main	huffman.cpp	/^int main() {$/;"	f
+maxHeapify	maxHeap.cpp	/^MaxHeap::void maxHeapify(int index) { $/;"	f	class:MaxHeap
+minHeapify	minHeap.hpp	/^void MinHeap<T>::minHeapify(int index) { $/;"	f	class:MinHeap
+nodeCount	BinaryTree.hpp	/^int BinaryTree<T>::nodeCount() const {$/;"	f	class:BinaryTree
+operator ==	BTreeNode.h	/^		bool operator==(BTreeNode<T>* bt) { \/\/重载操作符比较两结点是否相等$/;"	f	class:BTreeNode
+operator T	huffman.cpp	/^		operator T() const {$/;"	f	class:Huffman
+parent	BTreeNode.h	/^		BTreeNode<T>* parent; \/\/指向父结点的指针$/;"	m	class:BTreeNode
+postOrder	BinaryTree.hpp	/^void BinaryTree<T>::postOrder() {$/;"	f	class:BinaryTree
+postOrderTree	BinaryTree.hpp	/^void BinaryTree<T>::postOrderTree(BTreeNode<T>* root) {$/;"	f	class:BinaryTree
+preOrder	BinaryTree.hpp	/^void BinaryTree<T>::preOrder() {$/;"	f	class:BinaryTree
+preOrderTree	BinaryTree.hpp	/^void BinaryTree<T>::preOrderTree(BTreeNode<T>* root) {$/;"	f	class:BinaryTree
+print2DArray	activity-select.cpp	/^void print2DArray(int** a, int x, int y) {$/;"	f
+printActivity	activity-select.cpp	/^void printActivity(int* S, int** b, int i, int j) {$/;"	f
+printMaxHeapArray	maxHeap.cpp	/^void MaxHeap::printMaxHeapArray() { $/;"	f	class:MaxHeap
+printMinHeapArray	minHeap.hpp	/^void MinHeap<T>::printMinHeapArray() { $/;"	f	class:MinHeap
+right	BTreeNode.h	/^		BTreeNode<T>* right;$/;"	m	class:BTreeNode
+root	BinaryTree.hpp	/^		BTreeNode<T>* root() { return _root; };$/;"	f	class:BinaryTree
+setHeapSize	maxHeap.h	/^		void setHeapSize(int heapsize) { _heapsize = heapsize; }$/;"	f	class:MaxHeap
+setHeapSize	minHeap.hpp	/^		void setHeapSize(int heapsize) { _heapsize = heapsize; }$/;"	f	class:MinHeap
+setSize	maxHeap.h	/^		void setSize(int size) { _size = size; }$/;"	f	class:MaxHeap
+setSize	minHeap.hpp	/^		void setSize(int size) { _size = size; }$/;"	f	class:MinHeap
+size	maxHeap.h	/^		int size() { return _size; }$/;"	f	class:MaxHeap
+size	minHeap.hpp	/^		int size() { return _size; }$/;"	f	class:MinHeap
+sortMaxHeap	maxHeap.cpp	/^void MaxHeap::sortMaxHeap() { $/;"	f	class:MaxHeap
+sortMinHeap	minHeap.hpp	/^void MinHeap<T>::sortMinHeap() { $/;"	f	class:MinHeap
+tree	huffman.cpp	/^		BinaryTree<int> tree;$/;"	m	class:Huffman	file:
+treeHeight	BinaryTree.hpp	/^void BinaryTree<T>::treeHeight(const BTreeNode<T>* root) const {$/;"	f	class:BinaryTree
+treeNodeCount	BinaryTree.hpp	/^void BinaryTree<T>::treeNodeCount(const BTreeNode<T>* root) const {$/;"	f	class:BinaryTree
+val	BTreeNode.h	/^		T val;$/;"	m	class:BTreeNode
+valToString	BTreeNode.h	/^		std::string valToString() {$/;"	f	class:BTreeNode
+weight	huffman.cpp	/^		T weight;$/;"	m	class:Huffman	file:
+~BinaryTree	BinaryTree.hpp	/^BinaryTree<T>::~BinaryTree() {$/;"	f	class:BinaryTree
+~MaxHeap	maxHeap.cpp	/^MaxHeap::~MaxHeap() {$/;"	f	class:MaxHeap
+~MinHeap	minHeap.hpp	/^MinHeap<T>::~MinHeap() {$/;"	f	class:MinHeap

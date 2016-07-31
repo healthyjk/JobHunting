@@ -1,0 +1,17 @@
+3
+4 5
+.D.M.
+.DCAE
+.AABA
+MDDAM
+2 3 2 4
+2 4
+F.Z.
+ZZAZ
+1 2 0 2
+4 5
+.AAB.
+.AAB.
+ABBCB
+.AAB.
+2 3 2 4
