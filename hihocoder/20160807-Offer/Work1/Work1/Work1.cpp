@@ -14,50 +14,58 @@
 
 using namespace std;
 
-/* 经验教训： 第一题永远是暴力解就能过的。。。SX。。。
-   想不出好的解就用暴力解； */
+
 int main()
 {
-  ifstream cin("input.txt");
+	ifstream cin("input.txt");
 
-  int n, x;
-  cin >> n >> x;
-  vector<int> nums(n);
+	int n, m, k;
+	cin >> n >> m >> k;
+	vector<int> hurt(n);
 
-  for (int i = 0; i < n; ++i) {
-    cin >> nums[i];
-  }
+	int dead = 0;
 
-  int result = INT_MAX;
-  int current = 0;
+	for (int i = 0; i < n; ++i) {
+		cin >> hurt[i];
+		if (hurt[i] >= m) {
+			dead++;
+		}
+	}
 
-  for (int i = 0; i < n; ++i) {
-    current += nums[i];
-  }
-  if (current < x) {
-    cout << "-1" << endl;
-    return;
-  }
+	if (k <= 0 || dead >= k) {
+		cout << "-1" << endl;
+		return 0;
+	}
 
-  int MaxKind = 1 << n;
-  for (int i = 0; i < MaxKind; ++i) {
-    current = 0;
-    //将i看成20位的二进制数字，i的每一位代表第j个数是否选中
-    for (int j = 0; j < n; ++j) {
-      if (((1 << j) & i) != 0) {
-        current += nums[j];
-        if (current >= x) {
-          break;
-        }
-      }
-    }
+	int t = 0;
+	int remainK, remainM;
+	while (true) {
+		remainK = k;
+		remainM = m;
+		for (int i = 0; i < n; ++i) {
+			if (hurt[i] >= remainM) {
+				remainK--;
+				remainM = m;
+			} else {
+				remainM -= hurt[i];
+				remainM = (remainM + t > m) ? m : (remainM + t);
+			}
+			if (remainK <= 0) break;
+		}
 
-    if (current >= x && current < result) {
-      result = current;
-    }
-  }
+		if (remainK <= 0) {
+			t++;
+		} else {
+			break;
+		}
+	}
 
-  cout << result << endl;
-  return 0;
+	if (t == 0) {
+		cout << "1" << endl;
+	} else {
+		cout << t << endl;
+	}
+
+	return 0;
 }
 
