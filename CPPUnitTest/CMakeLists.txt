@@ -82,6 +82,7 @@ install(TARGETS UnitTest++ EXPORT "${targets_export_name_}" DESTINATION lib)
 ######################################################################################
 # build the test runner
 file(GLOB CPPTEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} CPPFeatureTest/*.cpp CPPFeatureTest/*.h)
+file(GLOB CPP_INPUTS_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} CPPFeatureTest/*.txt)
 source_group( "" FILES ${CPPTEST_SRCS})
 add_executable(CPPFeatureTest ${CPPTEST_SRCS})
 include_directories(.)
@@ -102,3 +103,6 @@ install(FILES ${headers_} DESTINATION ${UTPP_INSTALL_DESTINATION})
 install(FILES ${platformHeaders_} DESTINATION ${UTPP_INSTALL_DESTINATION}/${platformDir_})
 install(FILES cmake/UnitTest++Config.cmake DESTINATION "${config_install_dir_}")
 install(EXPORT "${targets_export_name_}" DESTINATION "${config_install_dir_}")
+
+# copy input file to build dir
+file(COPY ${CPP_INPUTS_} DESTINATION .)

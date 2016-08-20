@@ -22,6 +22,7 @@ using namespace std;
   * 时间：2016年8月18日
   **/
 
+
 SUITE(SPFATestCase1)
 {
     struct Node {
@@ -74,9 +75,7 @@ SUITE(SPFATestCase1)
         int ShortestPath(string input_file) {
             ifstream cin(input_file);
             int n, m;
-            cout << " test " << endl;
             while (cin >> n >> m) {
-              cout << n << "," << m << endl;
               vector<int> b(n+1);
               for (int i = 1; i < n; ++i) {
                 cin >> b[i];
@@ -126,13 +125,11 @@ SUITE(SPFATestCase1)
     TEST_FIXTURE(Solution, Normal1)
     {
         string file = "input_spfatest.txt";
-        cout << "test" << endl;
 
         int result = 0;
         result = ShortestPath(file);
 
-        cout << result << endl;
-        //CHECK_EQUAL(24,result);
+        CHECK_EQUAL(24,result);
         return;
     }
 }
