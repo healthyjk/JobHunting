@@ -2,5 +2,6 @@
 
 int main(int, char const *[])
 {
-   return UnitTest::RunAllTests();
+    //TRACE(CPPTEST, main);
+    return UnitTest::RunAllTests();
 }

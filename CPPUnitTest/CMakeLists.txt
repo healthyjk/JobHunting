@@ -35,8 +35,16 @@ file(GLOB platformHeaders_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UnitTest++/${pla
 file(GLOB platformSources_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UnitTest++/${platformDir_}/*.cpp)
 source_group(${platformDir_} FILES ${platformHeaders_} ${platformSources_})
 
+# get third-party log sources
+#set(logDir_ Log)
+#file(GLOB logHeaders_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UnitTest++/Log/*.h)
+#file(GLOB logSources_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UnitTest++/Log/*.cpp)
+#source_group(${logDir_} FILES ${logHeaders_} ${logSources_})
+
 # create the lib
-add_library(UnitTest++ STATIC ${headers_} ${sources_} ${platformHeaders_} ${platformSources_})
+add_library(UnitTest++ STATIC ${headers_} ${sources_} ${platformHeaders_} ${platformSources_} ${logHeaders_} ${logSources_})
+
+#add_library(LogTest STATIC ${logHeaders_} ${logSources_})
 
 if(${UTPP_USE_PLUS_SIGN})
 	set_target_properties(UnitTest++ PROPERTIES OUTPUT_NAME UnitTest++)
@@ -101,6 +109,7 @@ install(TARGETS CPPFeatureTest EXPORT "${targets_export_name_}" DESTINATION lib)
 
 install(FILES ${headers_} DESTINATION ${UTPP_INSTALL_DESTINATION})
 install(FILES ${platformHeaders_} DESTINATION ${UTPP_INSTALL_DESTINATION}/${platformDir_})
+#install(FILES ${logHeaders_} DESTINATION ${UTPP_INSTALL_DESTINATION}/${logDir_})
 install(FILES cmake/UnitTest++Config.cmake DESTINATION "${config_install_dir_}")
 install(EXPORT "${targets_export_name_}" DESTINATION "${config_install_dir_}")
 
