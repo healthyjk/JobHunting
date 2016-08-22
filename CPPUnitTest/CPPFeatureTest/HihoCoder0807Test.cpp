@@ -3,8 +3,11 @@
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
+#include "EasyLogging/easylogging++.h"
 
 using namespace std;
+
+INITIALIZE_EASYLOGGINGPP
 
 /**
   * 测试用例：hihocoder 20160807 编程挑战赛 练习题解答

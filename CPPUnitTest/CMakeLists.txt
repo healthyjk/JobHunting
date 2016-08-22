@@ -35,16 +35,12 @@ file(GLOB platformHeaders_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UnitTest++/${pla
 file(GLOB platformSources_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UnitTest++/${platformDir_}/*.cpp)
 source_group(${platformDir_} FILES ${platformHeaders_} ${platformSources_})
 
-# get third-party log sources
-#set(logDir_ Log)
-#file(GLOB logHeaders_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UnitTest++/Log/*.h)
-#file(GLOB logSources_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UnitTest++/Log/*.cpp)
-#source_group(${logDir_} FILES ${logHeaders_} ${logSources_})
+#include the necessary library
+include_directories(.)
+include_directories(EasyLogging)
 
 # create the lib
 add_library(UnitTest++ STATIC ${headers_} ${sources_} ${platformHeaders_} ${platformSources_} ${logHeaders_} ${logSources_})
-
-#add_library(LogTest STATIC ${logHeaders_} ${logSources_})
 
 if(${UTPP_USE_PLUS_SIGN})
 	set_target_properties(UnitTest++ PROPERTIES OUTPUT_NAME UnitTest++)
@@ -70,7 +66,6 @@ set(targets_export_name_ "${PROJECT_NAME}Targets")
 file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} tests/*.cpp tests/*.h)
 source_group( "" FILES ${TEST_SRCS})
 add_executable(TestUnitTest++ ${TEST_SRCS})
-include_directories(.)
 target_link_libraries(TestUnitTest++ UnitTest++)
 if(${UTPP_USE_PLUS_SIGN})
         set_target_properties(TestUnitTest++ PROPERTIES OUTPUT_NAME TestUnitTest++)
