@@ -7,8 +7,6 @@
 
 using namespace std;
 
-INITIALIZE_EASYLOGGINGPP
-
 /**
   * 测试用例：hihocoder 20160807 编程挑战赛 练习题解答
   * 第一题：最近天气炎热，小Ho天天宅在家里叫外卖。他常吃的一家餐馆一共有N道菜品，价格分别是A1, A2, ... AN元。
@@ -86,6 +84,7 @@ SUITE(HihoCoder0807Test)
 
     TEST_FIXTURE(Solution, Normal3)
     {
+        LOG(INFO) << "test";
         return;
     }
 }

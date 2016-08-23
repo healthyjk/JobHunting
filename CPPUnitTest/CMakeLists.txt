@@ -40,7 +40,7 @@ include_directories(.)
 include_directories(EasyLogging)
 
 # create the lib
-add_library(UnitTest++ STATIC ${headers_} ${sources_} ${platformHeaders_} ${platformSources_} ${logHeaders_} ${logSources_})
+add_library(UnitTest++ STATIC ${headers_} ${sources_} ${platformHeaders_} ${platformSources_})
 
 if(${UTPP_USE_PLUS_SIGN})
 	set_target_properties(UnitTest++ PROPERTIES OUTPUT_NAME UnitTest++)
@@ -58,6 +58,7 @@ endif()
 set(config_install_dir_ lib/cmake/${PROJECT_NAME})
 set(targets_export_name_ "${PROJECT_NAME}Targets")
 
+install(TARGETS UnitTest++ EXPORT "${targets_export_name_}" DESTINATION lib)
 
 ######################################################################################
 #tests Start
@@ -74,7 +75,6 @@ endif()
 add_custom_command(TARGET TestUnitTest++
         POST_BUILD COMMAND TestUnitTest++
         COMMENT "Running unit tests")
-install(TARGETS UnitTest++ EXPORT "${targets_export_name_}" DESTINATION lib)
 ######################################################################################
 #tests End
 ######################################################################################
@@ -96,17 +96,41 @@ endif()
 # run unit tests as post build step
 add_custom_command(TARGET CPPFeatureTest
         POST_BUILD COMMAND CPPFeatureTest
-        COMMENT "Running unit tests")
-install(TARGETS CPPFeatureTest EXPORT "${targets_export_name_}" DESTINATION lib)
+        COMMENT "Running cppfeatures unit tests")
+#install(TARGETS CPPFeatureTest EXPORT "${targets_export_name_}" DESTINATION lib)
 ######################################################################################
 #CPPFeatureTest End
 ######################################################################################
 
+######################################################################################
+#DemosTest Start
+######################################################################################
+# build the test runner
+file(GLOB DEMOSTEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} DemosTest/*.cpp DemosTest/*.h)
+file(GLOB DEMOS_INPUTS_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} DemosTest/*.txt)
+source_group( "" FILES ${DEMOSTEST_SRCS})
+add_executable(DemosTest ${DEMOSTEST_SRCS})
+include_directories(.)
+target_link_libraries(DemosTest UnitTest++)
+if(${UTPP_USE_PLUS_SIGN})
+        set_target_properties(DemosTest PROPERTIES OUTPUT_NAME DemosTest)
+endif()
+# run unit tests as post build step
+add_custom_command(TARGET DemosTest
+        POST_BUILD COMMAND DemosTest
+        COMMENT "Running demos unit tests")
+#install(TARGETS DemosTest EXPORT "${targets_export_name_}" DESTINATION lib)
+######################################################################################
+#DemosTest End
+######################################################################################
+
+
+
 install(FILES ${headers_} DESTINATION ${UTPP_INSTALL_DESTINATION})
 install(FILES ${platformHeaders_} DESTINATION ${UTPP_INSTALL_DESTINATION}/${platformDir_})
-#install(FILES ${logHeaders_} DESTINATION ${UTPP_INSTALL_DESTINATION}/${logDir_})
 install(FILES cmake/UnitTest++Config.cmake DESTINATION "${config_install_dir_}")
 install(EXPORT "${targets_export_name_}" DESTINATION "${config_install_dir_}")
 
 # copy input file to build dir
 file(COPY ${CPP_INPUTS_} DESTINATION .)
+file(COPY ${DEMOS_INPUTS_} DESTINATION .)
