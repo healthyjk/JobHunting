@@ -25,9 +25,9 @@ SUITE(SingleTonTest)
 
     TEST(SingleTonTest1)
     {
-        SingleTon<Solution, int>* single1 = SingleTon<Solution, int>::getInstance();
-        SingleTon<Solution, int>* single2 = SingleTon<Solution, int>::getInstance();
-        CHECK_EQUAL(single1, single2);
+//        SingleTon<Solution, int>* single1 = SingleTon<Solution, int>::getInstance();
+//        SingleTon<Solution, int>* single2 = SingleTon<Solution, int>::getInstance();
+//        CHECK_EQUAL(single1, single2);
         return;
     }
 
