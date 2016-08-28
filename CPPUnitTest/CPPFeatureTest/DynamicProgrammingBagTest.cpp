@@ -83,6 +83,9 @@ SUITE(DynamicProgrammingBagTest)
 
             return current;
         }
+
+        /* 待补充： 多重背包问题求解及其二进制优化 */
+
     };
 
     int w[] = {3, 4, 5, 6, 7, 9, 1};

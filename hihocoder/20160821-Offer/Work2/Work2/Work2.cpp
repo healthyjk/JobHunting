@@ -96,41 +96,41 @@ vector<int> findNeedRepair(vector<int> heights, int l) {
 	return result;
 }
 
-int main()
-{
-	ifstream cin("input.txt");
-
-	int n, m, l;
-
-	while (cin >> n >> m >> l) {
-		vector<int> heights(n);
-		int max = INT_MIN;
-		for (int i = 0; i < n; ++i) {
-			cin >> heights[i];
-			if (heights[i] > max) {
-				max = heights[i];
-			}
-		}
-
-		for (int i = 0; i < m; ++i) {
-			vector<int> need_repair = findNeedRepair(heights, l);
-			for (int j = 0; j < l; ++j) {
-				heights[need_repair[j]] = max;
-			}
-		}
-
-		int min_board = INT_MAX;
-		for (int i = 0; i < n; ++i) {
-			if (heights[i] < min_board) {
-				min_board = heights[i];
-			}
-		}
-
-		cout << min_board << endl;
-	}
-
-	return 0;
-}
-
-
-
+//int main()
+//{
+//	ifstream cin("input.txt");
+//
+//	int n, m, l;
+//
+//	while (cin >> n >> m >> l) {
+//		vector<int> heights(n);
+//		int max = INT_MIN;
+//		for (int i = 0; i < n; ++i) {
+//			cin >> heights[i];
+//			if (heights[i] > max) {
+//				max = heights[i];
+//			}
+//		}
+//
+//		for (int i = 0; i < m; ++i) {
+//			vector<int> need_repair = findNeedRepair(heights, l);
+//			for (int j = 0; j < l; ++j) {
+//				heights[need_repair[j]] = max;
+//			}
+//		}
+//
+//		int min_board = INT_MAX;
+//		for (int i = 0; i < n; ++i) {
+//			if (heights[i] < min_board) {
+//				min_board = heights[i];
+//			}
+//		}
+//
+//		cout << min_board << endl;
+//	}
+//
+//	return 0;
+//}
+//
+//
+//

@@ -125,6 +125,29 @@ add_custom_command(TARGET DemosTest
 ######################################################################################
 
 
+######################################################################################
+#UtilsTest Start
+######################################################################################
+# build the test runner
+file(GLOB UTILSTEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UtilsTest/*.cpp UtilsTest/*.h)
+file(GLOB UTILS_INPUTS_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UtilsTest/*.txt)
+source_group( "" FILES ${UTILSTEST_SRCS})
+add_executable(UtilsTest ${UTILSTEST_SRCS})
+include_directories(.)
+target_link_libraries(UtilsTest UnitTest++)
+if(${UTPP_USE_PLUS_SIGN})
+        set_target_properties(UtilsTest PROPERTIES OUTPUT_NAME UtilsTest)
+endif()
+# run unit tests as post build step
+add_custom_command(TARGET UtilsTest
+        POST_BUILD COMMAND UtilsTest
+        COMMENT "Running demos unit tests")
+#install(TARGETS DemosTest EXPORT "${targets_export_name_}" DESTINATION lib)
+######################################################################################
+#DemosTest End
+######################################################################################
+
+
 
 install(FILES ${headers_} DESTINATION ${UTPP_INSTALL_DESTINATION})
 install(FILES ${platformHeaders_} DESTINATION ${UTPP_INSTALL_DESTINATION}/${platformDir_})
@@ -134,3 +157,4 @@ install(EXPORT "${targets_export_name_}" DESTINATION "${config_install_dir_}")
 # copy input file to build dir
 file(COPY ${CPP_INPUTS_} DESTINATION .)
 file(COPY ${DEMOS_INPUTS_} DESTINATION .)
+file(COPY ${UTILS_INPUTS_} DESTINATION .)

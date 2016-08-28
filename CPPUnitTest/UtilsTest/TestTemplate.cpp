@@ -10,7 +10,7 @@ using namespace std;
   * 时间：2016年8月14日
   **/
 
-SUITE(DemosTemplateTest)
+SUITE(UtilsTemplateTest)
 {
     class Solution {
     public:

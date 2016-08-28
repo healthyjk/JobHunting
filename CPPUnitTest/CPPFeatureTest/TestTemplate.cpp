@@ -9,7 +9,7 @@ using namespace std;
   * 作者：yanjiankang
   * 时间：2016年8月14日
   **/
-SUITE(TemplateTest)
+SUITE(CPPFeatureTemplateTest)
 {
     class Solution {
     public:
