@@ -64,7 +64,7 @@ install(TARGETS UnitTest++ EXPORT "${targets_export_name_}" DESTINATION lib)
 #tests Start
 ######################################################################################
 # build the test runner
-file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} tests/*.cpp tests/*.h)
+file(GLOB TEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} tests/*.cpp tests/*.h tests/*.hpp)
 source_group( "" FILES ${TEST_SRCS})
 add_executable(TestUnitTest++ ${TEST_SRCS})
 target_link_libraries(TestUnitTest++ UnitTest++)
@@ -84,7 +84,7 @@ add_custom_command(TARGET TestUnitTest++
 #CPPFeatureTest Start
 ######################################################################################
 # build the test runner
-file(GLOB CPPTEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} CPPFeatureTest/*.cpp CPPFeatureTest/*.h)
+file(GLOB CPPTEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} CPPFeatureTest/*.cpp CPPFeatureTest/*.h CPPFeatureTest/*.hpp)
 file(GLOB CPP_INPUTS_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} CPPFeatureTest/*.txt)
 source_group( "" FILES ${CPPTEST_SRCS})
 add_executable(CPPFeatureTest ${CPPTEST_SRCS})
@@ -106,7 +106,7 @@ add_custom_command(TARGET CPPFeatureTest
 #DemosTest Start
 ######################################################################################
 # build the test runner
-file(GLOB DEMOSTEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} DemosTest/*.cpp DemosTest/*.h)
+file(GLOB DEMOSTEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} DemosTest/*.cpp DemosTest/*.h DemosTest/*.hpp)
 file(GLOB DEMOS_INPUTS_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} DemosTest/*.txt)
 source_group( "" FILES ${DEMOSTEST_SRCS})
 add_executable(DemosTest ${DEMOSTEST_SRCS})
@@ -129,7 +129,7 @@ add_custom_command(TARGET DemosTest
 #UtilsTest Start
 ######################################################################################
 # build the test runner
-file(GLOB UTILSTEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UtilsTest/*.cpp UtilsTest/*.h)
+file(GLOB UTILSTEST_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UtilsTest/*.cpp UtilsTest/*.h UtilsTest/*.hpp)
 file(GLOB UTILS_INPUTS_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} UtilsTest/*.txt)
 source_group( "" FILES ${UTILSTEST_SRCS})
 add_executable(UtilsTest ${UTILSTEST_SRCS})

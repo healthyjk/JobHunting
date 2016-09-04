@@ -1,7 +1,7 @@
 #include "UnitTest++/UnitTest++.h"
 #include <vector>
 #include <iostream>
-#include "singleton.hpp"
+#include "Singleton.hpp"
 
 using namespace std;
 
@@ -13,33 +13,38 @@ using namespace std;
 
 SUITE(SingleTonTest)
 {
-    class Solution {
-    public:
-        int test() {
-            a = 1;
-            return a;
-        }
-    private:
-        int a ;
-    };
 
     TEST(SingleTonTest1)
     {
-//        SingleTon<Solution, int>* single1 = SingleTon<Solution, int>::getInstance();
-//        SingleTon<Solution, int>* single2 = SingleTon<Solution, int>::getInstance();
-//        CHECK_EQUAL(single1, single2);
+        string test("hello");
+        string* single1 = TemplateSingleTon<string>::instance(test);
+        string* single2 = TemplateSingleTon<string>::getInstance();
+        CHECK_EQUAL(single1, single2);
+        TemplateSingleTon<string>::destoryInstance();
+        single1 = TemplateSingleTon<string>::getInstance();
         return;
     }
 
     TEST(SingleTonTest2)
     {
-
-        return;
+        SingleTon_Lazy1* single1 = SingleTon_Lazy1::getInstance();
+        SingleTon_Lazy1* single2 = SingleTon_Lazy1::getInstance();
+        CHECK_EQUAL(single1, single2);
+        //SingleTon_Lazy1::destoryInstance();
     }
 
     TEST(SingleTonTest3)
     {
+        SingleTon_Lazy2* single1 = SingleTon_Lazy2::getInstance();
+        SingleTon_Lazy2* single2 = SingleTon_Lazy2::getInstance();
+        CHECK_EQUAL(single1, single2);
+    }
 
-        return;
+    TEST(SingleTonTest4)
+    {
+        const SingleTon_Hungry* single1 = SingleTon_Hungry::getInstance();
+        const SingleTon_Hungry* single2 = SingleTon_Hungry::getInstance();
+        CHECK_EQUAL(single1, single2);
+        SingleTon_Hungry::destoryInstance();
     }
 }

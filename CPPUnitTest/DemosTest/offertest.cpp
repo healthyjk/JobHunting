@@ -6,7 +6,7 @@
 using namespace std;
 
 /**
-  * 测试用例：代码测试模版用于拷贝
+  * 测试用例：剑指offer上的一些题
   * 作者：yanjiankang
   * 时间：2016年8月14日
   **/
@@ -164,6 +164,38 @@ SUITE(OfferTest)
             }
             return -1;
         }
+
+        /*获取翻转的数字*/
+        int getReverseNum(int num) {
+            vector<int> bit;
+            if (num == 0) return 1;
+            while (num != 0) {
+                bit.push_back(num % 2);
+                num >>= 1;
+            }
+
+            int n = bit.size();
+            int result = 0;
+            for (int i = 0; i < n; ++i) {
+                result += bit[i] == 1 ? (1 << (n-1-i)) : 0;
+            }
+
+            return result;
+        }
+
+        /*乐视编程题：偶数翻转*/
+        vector<int> EvenReverse(vector<int>& a) {
+            int n = a.size();
+            vector<int> result;
+            for (int i = 0; i < n; ++i) {
+                if (a[i] % 2 == 0) {
+                    result.push_back(getReverseNum(a[i]));
+                } else {
+                    result.push_back(a[i]);
+                }
+            }
+            return result;
+        }
     };
 
     /*小于n的数中1出现的次数测试*/
@@ -206,6 +238,19 @@ SUITE(OfferTest)
 
         int result = lastRemaining(9);
         CHECK_EQUAL(6, result);
+        return;
+    }
+
+    /*测试偶数翻转*/
+    TEST_FIXTURE(Solution, Normal5)
+    {
+        vector<int> a = {26,52,31,45,82,34};
+        vector<int> result = EvenReverse(a);
+//        for (int i = 0; i < result.size(); ++i) {
+//            cout << result[i] << endl;
+//        }
+        vector<int> b = {11,11,31,45,37,17};
+        CHECK_ARRAY_EQUAL(b, result, 6);
         return;
     }
 }
