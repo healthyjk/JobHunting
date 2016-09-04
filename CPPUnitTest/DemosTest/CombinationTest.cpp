@@ -73,14 +73,14 @@ SUITE(CombinationTest)
     TEST_FIXTURE(Solution, Normal1)
     {
         string test("abc");
-        getCombinationList_NoRepeat(test);
+        //getCombinationList_NoRepeat(test);
         return;
     }
 
     TEST_FIXTURE(Solution, Normal2)
     {
         string test("aabc");
-        getCombinationList_WithRepeat(test);
+        //getCombinationList_WithRepeat(test);
         return;
     }
 
