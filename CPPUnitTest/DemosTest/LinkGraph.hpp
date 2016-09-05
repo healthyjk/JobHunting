@@ -5,6 +5,7 @@
 #include <queue>
 #include <vector>
 #include <algorithm>
+#include <stack>
 
 #define WHITE 1
 #define BLACK 0
@@ -43,10 +44,12 @@ class LinkGraph {
 public:
     int vNum;
     Vertex* V;
+    vector<int> degree;
 
     LinkGraph(int num) {
         V = new Vertex[num];
         vNum = num;
+        degree.resize(num, 0);
     }
 
     ~LinkGraph() {
@@ -77,6 +80,7 @@ public:
             NewEdge->next = e;
             pre->next = NewEdge;
         }
+        degree[end]++;
     }
 
 
@@ -112,8 +116,8 @@ public:
 
     void DFS();
     void BFS(int start);
-    void TopologySort();
-    void TopologySort_2();
+    void TopologySort();  /*使用DFS实现的拓扑排序*/
+    void TopologySort_2(); /*使用入度为0算法实现的拓扑排序*/
 
 private:
     void DFSVisit(int u, int& time);
@@ -254,6 +258,104 @@ void topoSort(vector<int> degree, const vector<vector<int> >& edges, vector<int>
         for (int i = 0; i < edges[v].size(); ++i) {
             if ((--degree[edges[v][i]]) == 0) { //相邻顶点入度减一，若为0，加入队列
                 Q.push(edges[v][i]);
+            }
+        }
+    }
+}
+
+/* 用于计算AOE网络关键路径的 拓扑排序，若GL无回路，则输出拓扑排序序列并返回1，若有回路返回0。 */
+bool TopologicalSort(LinkGraph& graph, vector<int>& etv, stack<int>& s2)
+{
+    int count = 0;/* 用于统计输出顶点的个数 */
+    stack<int> s1;
+    /*添加入度为0的点*/
+    for (int i = 0; i < graph.vNum; i++) {
+        if (0 == graph.degree[i]){
+            s1.push(i);
+        }
+    }
+
+    cout << "TopologicalSort ..." << endl;
+    while (!s1.empty())
+    {
+        int top = s1.top();
+        s1.pop();
+        cout << (top+1) << " -> ";
+        count++; /* 输出i号顶点，并计数 */
+
+        s2.push(top);
+
+        for (Edge* pe = graph.V[top].head; NULL != pe; pe = pe->next)
+        {
+            int k = pe->end;
+            /* 将i号顶点的邻接点的入度减1，如果减1后为0，则入栈 */
+            if (0 == (--graph.degree[k])) {
+                s1.push(k);
+            }
+            /* 求各顶点事件的最早发生时间etv值 */
+            if ((etv[top] + pe->value) > etv[k]) {
+                etv[k] = etv[top] + pe->value;
+            }
+        }
+    }
+    cout << endl;
+    if (count < graph.vNum)
+        return false;
+    else
+        return true;
+}
+
+/* 求关键路径,GL为有向网，输出G的各项关键活动 */
+void CriticalPath(LinkGraph& graph)
+{
+    int ete, lte;/* 声明活动最早发生时间和最迟发生时间变量 */
+    vector<int> etv(graph.vNum, 0); /* 事件最早(Earlist)发生时间数组 */
+    vector<int> ltv(graph.vNum, 0); /* 事件最晚(Latest)发生时间数组 */
+    stack<int> s2;
+
+    TopologicalSort(graph, etv, s2);/* 求拓扑序列，计算数组etv和stack2的值 */
+
+    cout << "etv : ";
+    for (int i = 0; i < graph.vNum; i++) {
+        cout << etv[i] << ' ';
+    }
+    cout << endl;
+
+    for (int i = 0; i < graph.vNum; i++) {
+        ltv[i] = etv[graph.vNum - 1];
+    } /* 初始化 */
+
+    while (!s2.empty())/* 出栈是求ltv */
+    {
+        int top = s2.top();
+        s2.pop();
+
+        /* 求各顶点事件的最迟发生时间ltv值 */
+        for (Edge* pe = graph.V[top].head; NULL != pe; pe = pe->next)
+        {
+            int k = pe->end;
+            if (ltv[k] - pe->value < ltv[top])
+                ltv[top] = ltv[k] - pe->value;
+        }
+    }
+
+    cout << "ltv : ";
+    for (int i = 0; i < graph.vNum; i++) {
+        cout << ltv[i] << ' ';
+    }
+    cout << endl;
+
+    /* 求ete,lte和关键活动 */
+    for (int j = 0; j < graph.vNum; j++)
+    {
+        for (Edge* pe = graph.V[j].head; NULL != pe; pe = pe->next)
+        {
+            int k = pe->end;
+            ete = etv[j];/* 活动最早发生时间 */
+            lte = ltv[k] - pe->value;/* 活动最迟发生时间 */
+            if (ete == lte) { /* 两者相等即在关键路径上 */
+                cout << "<v" << (j+1) << " - v"
+                     << (k+1) << "> length: " << pe->value << endl;
             }
         }
     }

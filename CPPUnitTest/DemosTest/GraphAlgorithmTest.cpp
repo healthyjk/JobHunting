@@ -39,5 +39,19 @@ SUITE(GraphAlgorithmTest)
         graph.TopologySort_2();
         return;
     }
+
+    /*测试AOE网络的关键路径查找功能*/
+    TEST(Normal3)
+    {
+        vector<int> start = {1,1,1,2,2,4,3,3,6,5};
+        vector<int> end   = {2,3,4,5,4,5,4,6,7,7};
+        vector<int> value = {3,2,6,4,2,1,1,3,4,3};
+        LinkGraph graph(7);
+        for (int i = 0 ; i < start.size(); ++i) {
+            graph.AddSingleEdge(start[i]-1, end[i]-1, value[i]);
+        }
+        CriticalPath(graph);
+        return;
+    }
 }
 
