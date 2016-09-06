@@ -22,8 +22,8 @@ SUITE(GraphAlgorithmTest)
         for (int i = 0 ; i < start.size(); ++i) {
             graph.AddDoubleEdge(start[i]-1, end[i]-1);
         }
-        graph.BFS(1);
-        graph.DFS();
+//        graph.BFS(1);
+//        graph.DFS();
         return;
     }
 
@@ -35,8 +35,8 @@ SUITE(GraphAlgorithmTest)
         for (int i = 0 ; i < start.size(); ++i) {
             graph.AddSingleEdge(start[i]-1, end[i]-1);
         }
-        graph.TopologySort();
-        graph.TopologySort_2();
+//        graph.TopologySort();
+//        graph.TopologySort_2();
         return;
     }
 
@@ -50,7 +50,7 @@ SUITE(GraphAlgorithmTest)
         for (int i = 0 ; i < start.size(); ++i) {
             graph.AddSingleEdge(start[i]-1, end[i]-1, value[i]);
         }
-        CriticalPath(graph);
+//        CriticalPath(graph);
         return;
     }
 }

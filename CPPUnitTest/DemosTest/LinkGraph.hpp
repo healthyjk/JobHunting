@@ -123,7 +123,7 @@ private:
     void DFSVisit(int u, int& time);
 };
 
-
+/*DFS算法遍历*/
 void LinkGraph::DFS() {
     for (int i = 0; i < vNum; ++i) {
         V[i].color = WHITE;
@@ -159,6 +159,7 @@ void LinkGraph::DFSVisit(int u, int& time) {
     V[u].f = time;
 }
 
+/*BFS算法遍历*/
 void LinkGraph::BFS(int start) {
     if (start < 0 || start > vNum) {
         return;
@@ -213,7 +214,9 @@ void LinkGraph::TopologySort() {
     cout << endl;
 }
 
-
+/**
+拓扑排序函数：利用顶点入度为0来计算
+**/
 void LinkGraph::TopologySort_2() {
     vector<int> degree(vNum, 0);
     vector<vector<int> > edges(vNum);
@@ -360,5 +363,91 @@ void CriticalPath(LinkGraph& graph)
         }
     }
 }
+
+/**
+ * Dijkstra算法:
+**/
+//vector<int>& dijkstra(LinkGraph& graph, int start) {
+//    vector<int> dist(graph.vNum, INT_MAX);
+//    if (start < 0 || start >= graph.vNum || dist.size() < graph.vNum) {
+//        return;
+//    }
+//    queue<int> q;
+//    q.push(start);
+//    dist[start] = 0;
+
+//    while (!q.empty()) {
+//        int top = q.front();
+//        q.pop();
+//        int min = INT_MAX;
+//        int next = -1;
+//        for (Edge *head = graph.V[i].head; NULL != head; head = head->next) {
+//            int k = head->end;
+//            if (head->value + dist < dist[k]) {
+//                dist[k] = head->value + dist;
+//            }
+//            if (dist[k] < min) {
+//                next = k;
+//                min = dist[k];
+//            }
+//        }
+//        if (next == -1) {
+//            break;
+//        } else {
+//            q.push(next);
+//        }
+//    }
+//}
+
+//void ShortestPath_DJS(unsigned int adjMat[][vexCounts],unsigned int s)
+//{
+//    vector<vertexdata> vexset; //已经找到最短路径的顶点集
+//    vector<uint> dist(vexCounts); //没有被找的最短路径的顶点距离信息
+//    vector<vector<vertexdata> > path(vexCounts); //每个顶点的最短路径信息
+//    for (unsigned int i = 0; i < vexCounts; i++)
+//    {
+//        dist[i] = adjMat[s][i];  //初始化距离
+//        if (dist[i] != INFINITE)//s是否有路径到达i
+//        {
+//            path[i].push_back(s);  //把保存最短路径
+//            path[i].push_back(i);
+//        }
+//    }
+//    vexset.push_back(s); //初始把顶点s加入vexset
+
+//    for (unsigned int n = 1; n <= vexCounts-1; n++)
+//    {
+//        UINT min = INFINITE;
+//        UINT k = INFINITE;
+//        for (int i = 0; i < vexCounts;i++) //寻找下一条最短路径
+//        {
+//            if (find(vexset.rbegin(),vexset.rend(),i) == vexset.rend() && dist[i] < min)
+//            {
+//                k = i;
+//                min = dist[i];
+//            }
+//        }
+//        vexset.push_back(k); //把最短路径顶点加入vexset中
+//        for (int i = 0; i < vexCounts;i++)  //更新dist
+//        {
+//            /*检测vexset中是否已经有顶点i,即i的最短路径是否已经找到。
+//            如果没有找到，则判定是否需要更新最短路径*/
+//            if (find(vexset.rbegin(), vexset.rend(), i) == vexset.rend()
+//                && adjMat[k][i] != INFINITE && dist[k]+ adjMat[k][i] < dist[i])
+//            {
+//                dist[i] = dist[k] + adjMat[k][i];
+//                path[i] = path[k];
+//                path[i].push_back(i);
+//            }
+//        };
+//        /*便于观察，输出每个顶点的最短路径经过的所有其他顶点及其距离*/
+//        cout << "Path: ";
+//        for (int i = 0; i < path[k].size();i++)
+//        {
+//            cout << vextex[path[k][i]] << ",";
+//        }
+//        cout << "     距离="<<dist[k]<<endl;
+//    }
+//}
 
 #endif // GRAPH_HPP
