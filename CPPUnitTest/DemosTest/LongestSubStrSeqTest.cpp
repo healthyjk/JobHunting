@@ -1,6 +1,7 @@
 #include "UnitTest++/UnitTest++.h"
 #include <vector>
 #include <iostream>
+#include <algorithm>
 #include "EasyLogging/easylogging++.h"
 
 using namespace std;
@@ -29,6 +30,26 @@ SUITE(LongestSubStrSeqTest)
                     }
                 }
             }
+
+            string result;
+            for (int i = n, j = m; i >= 1 && j >= 1;) {
+                if (str1[i-1] == str2[j-1]) {
+                    result.push_back(str1[i-1]);
+                    i--;
+                    j--;
+                } else {
+                    if(dp[i][j -1] > dp[i - 1][j])
+                    {
+                        j--;
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+            }
+            reverse(result.begin(), result.end());
+            cout << result << endl;
             return dp[n][m];
         }
     };
