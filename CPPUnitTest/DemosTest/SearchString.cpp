@@ -64,10 +64,10 @@ SUITE(SearchStringTest)
 
     TEST_FIXTURE(Solution, Normal1)
     {
-        string str1= "acaabc";
-        string str2= "aab";
-        int result = kmpSearch(str1, str2);
-        LOG(INFO) << result;
+//        string str1= "acaabc";
+//        string str2= "aab";
+//        int result = kmpSearch(str1, str2);
+//        LOG(INFO) << result;
         return;
     }
 

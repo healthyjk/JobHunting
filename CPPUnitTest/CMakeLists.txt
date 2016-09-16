@@ -72,9 +72,9 @@ if(${UTPP_USE_PLUS_SIGN})
         set_target_properties(TestUnitTest++ PROPERTIES OUTPUT_NAME TestUnitTest++)
 endif()
 # run unit tests as post build step
-add_custom_command(TARGET TestUnitTest++
-        POST_BUILD COMMAND TestUnitTest++
-        COMMENT "Running unit tests")
+#add_custom_command(TARGET TestUnitTest++
+#        POST_BUILD COMMAND TestUnitTest++
+#        COMMENT "Running unit tests")
 ######################################################################################
 #tests End
 ######################################################################################
@@ -94,9 +94,9 @@ if(${UTPP_USE_PLUS_SIGN})
         set_target_properties(CPPFeatureTest PROPERTIES OUTPUT_NAME CPPFeatureTest)
 endif()
 # run unit tests as post build step
-add_custom_command(TARGET CPPFeatureTest
-        POST_BUILD COMMAND CPPFeatureTest
-        COMMENT "Running cppfeatures unit tests")
+#add_custom_command(TARGET CPPFeatureTest
+#        POST_BUILD COMMAND CPPFeatureTest
+#        COMMENT "Running cppfeatures unit tests")
 #install(TARGETS CPPFeatureTest EXPORT "${targets_export_name_}" DESTINATION lib)
 ######################################################################################
 #CPPFeatureTest End
@@ -116,9 +116,9 @@ if(${UTPP_USE_PLUS_SIGN})
         set_target_properties(DemosTest PROPERTIES OUTPUT_NAME DemosTest)
 endif()
 # run unit tests as post build step
-add_custom_command(TARGET DemosTest
-        POST_BUILD COMMAND DemosTest
-        COMMENT "Running demos unit tests")
+#add_custom_command(TARGET DemosTest
+#        POST_BUILD COMMAND DemosTest
+#        COMMENT "Running demos unit tests")
 #install(TARGETS DemosTest EXPORT "${targets_export_name_}" DESTINATION lib)
 ######################################################################################
 #DemosTest End
@@ -138,13 +138,36 @@ target_link_libraries(UtilsTest UnitTest++)
 if(${UTPP_USE_PLUS_SIGN})
         set_target_properties(UtilsTest PROPERTIES OUTPUT_NAME UtilsTest)
 endif()
+
 # run unit tests as post build step
-add_custom_command(TARGET UtilsTest
-        POST_BUILD COMMAND UtilsTest
-        COMMENT "Running demos unit tests")
+#add_custom_command(TARGET UtilsTest
+#        POST_BUILD COMMAND UtilsTest
+#        COMMENT "Running demos unit tests")
 #install(TARGETS DemosTest EXPORT "${targets_export_name_}" DESTINATION lib)
 ######################################################################################
-#DemosTest End
+#UtilsTest End
+######################################################################################
+
+######################################################################################
+#PatternTest Start
+######################################################################################
+# build the test runner
+file(GLOB PATTERN_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} PatternTest/*.cpp PatternTest/*.h PatternTest/*.hpp)
+file(GLOB PATTERN_INPUTS_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} PatternTest/*.txt)
+source_group( "" FILES ${PATTERN_SRCS})
+add_executable(PatternTest ${PATTERN_SRCS})
+include_directories(.)
+target_link_libraries(PatternTest UnitTest++)
+if(${UTPP_USE_PLUS_SIGN})
+        set_target_properties(PatternTest PROPERTIES OUTPUT_NAME PatternTest)
+endif()
+
+# run unit tests as post build step
+#add_custom_command(TARGET PatternTest
+#        POST_BUILD COMMAND PatternTest
+#        COMMENT "Running demos unit tests")
+######################################################################################
+#PatternTest End
 ######################################################################################
 
 
@@ -158,3 +181,4 @@ install(EXPORT "${targets_export_name_}" DESTINATION "${config_install_dir_}")
 file(COPY ${CPP_INPUTS_} DESTINATION .)
 file(COPY ${DEMOS_INPUTS_} DESTINATION .)
 file(COPY ${UTILS_INPUTS_} DESTINATION .)
+file(COPY ${PATTERN_INPUTS_} DESTINATION .)

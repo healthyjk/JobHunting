@@ -49,7 +49,7 @@ SUITE(LongestSubStrSeqTest)
                 }
             }
             reverse(result.begin(), result.end());
-            cout << result << endl;
+            LOG(INFO) << result;
             return dp[n][m];
         }
     };
