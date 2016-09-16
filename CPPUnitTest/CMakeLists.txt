@@ -170,6 +170,27 @@ endif()
 #PatternTest End
 ######################################################################################
 
+######################################################################################
+#AlgorithmTest Start
+######################################################################################
+# build the test runner
+file(GLOB ALGORITHM_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} AlgorithmTest/*.cpp AlgorithmTest/*.h AlgorithmTest/*.hpp)
+file(GLOB ALGORITHM_INPUTS_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} AlgorithmTest/*.txt)
+source_group( "" FILES ${ALGORITHM_SRCS})
+add_executable(AlgorithmTest ${ALGORITHM_SRCS})
+include_directories(.)
+target_link_libraries(AlgorithmTest UnitTest++)
+if(${UTPP_USE_PLUS_SIGN})
+        set_target_properties(AlgorithmTest PROPERTIES OUTPUT_NAME AlgorithmTest)
+endif()
+
+# run unit tests as post build step
+#add_custom_command(TARGET AlgorithmTest
+#        POST_BUILD COMMAND AlgorithmTest
+#        COMMENT "Running demos unit tests")
+######################################################################################
+#AlgorithmTest End
+######################################################################################
 
 
 install(FILES ${headers_} DESTINATION ${UTPP_INSTALL_DESTINATION})

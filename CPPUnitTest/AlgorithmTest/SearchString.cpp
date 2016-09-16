@@ -6,7 +6,7 @@
 using namespace std;
 
 /**
-  * 测试用例：代码测试模版用于拷贝
+  * 测试用例：KMP字符串搜索算法
   * 作者：yanjiankang
   * 时间：2016年9月7日
   **/
@@ -41,9 +41,10 @@ SUITE(SearchStringTest)
             return -1;
         }
 
-        void computeNext(string& p, vector<int> next) {
-            int i = 0;
+        void computeNext(string& p, vector<int>& next) {
+            if (p.size() <= 0 || next.size() != p.size()) return;
             next[0] = -1;
+            int i = 0;
             int j = -1;
             int n = p.size();
             while (i < n-1) {
@@ -64,10 +65,10 @@ SUITE(SearchStringTest)
 
     TEST_FIXTURE(Solution, Normal1)
     {
-//        string str1= "acaabc";
-//        string str2= "aab";
-//        int result = kmpSearch(str1, str2);
-//        LOG(INFO) << result;
+        string str1= "acaabc";
+        string str2= "aab";
+        int result = kmpSearch(str1, str2);
+        LOG(INFO) << result;
         return;
     }
 
