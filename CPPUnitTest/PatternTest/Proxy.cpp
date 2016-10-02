@@ -19,7 +19,7 @@ public:
 class RealSubject : public Subject {
 public:
     void request() {
-        LOG(INFO) << "RealSubject Operation" << endl;
+        LOG(INFO) << "RealSubject Operation";
     }
 };
 
@@ -39,11 +39,11 @@ public:
     }
 
     void preRequest() {
-        LOG(INFO) << "preRequest" << endl;
+        LOG(INFO) << "preRequest";
     }
 
     void postRequest() {
-        LOG(INFO) << "postRequest" << endl;
+        LOG(INFO) << "postRequest";
     }
 
     void request() {
