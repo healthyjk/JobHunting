@@ -31,7 +31,7 @@ public:
 class ImplementationB : public Implementation {
 public:
     void operationImpl() {
-        LOG(INFO) << "A mplementation!";
+        LOG(INFO) << "B mplementation!";
     }
 };
 
@@ -51,12 +51,14 @@ public:
         implementation_->operationImpl();
     }
 
+protected:
     Implementation* implementation_;
 };
 
 class RefinedAbstration : public Abstration {
 public:
     RefinedAbstration(Implementation* impl) : Abstration(impl)  {}
+
     void operation(){
         LOG(INFO) << "do something else, and then";
         implementation_->operationImpl();
