@@ -45,7 +45,7 @@ SUITE(TempTest)
         vector<int> nums = {1,2,3};
         int target = 4;
         int result = combinationSum4(nums, target);
-        LOG(INFO) << "combination result:" << result << endl;
+        LOG(INFO) << "combination result:" << result;
         return;
     }
 

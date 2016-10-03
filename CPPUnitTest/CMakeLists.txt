@@ -152,7 +152,7 @@ endif()
 #PatternTest Start
 ######################################################################################
 # build the test runner
-file(GLOB PATTERN_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} PatternTest/*.cpp PatternTest/*.h PatternTest/*.hpp)
+file(GLOB PATTERN_SRCS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} PatternTest/*.cpp PatternTest/*.h PatternTest/*.hpp PatternTest/*/*.h PatternTest/*/*.cpp PatternTest/*/*.hpp)
 file(GLOB PATTERN_INPUTS_ RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} PatternTest/*.txt)
 source_group( "" FILES ${PATTERN_SRCS})
 add_executable(PatternTest ${PATTERN_SRCS})
