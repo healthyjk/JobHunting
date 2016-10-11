@@ -54,8 +54,9 @@ int LongestRemainLegalStringLength2(vector<vector<bool>>& legal, int n, string& 
 int LongestRemainLegalStringLength3(vector<vector<bool>>& legal, int n, string& s) {
   vector<int> table(26, 0);
   int max_remain = 0;
-  int temp = 1;
+  int temp;
   for (int i = 0; i < n; ++i) {
+    temp = 1;
     int index = s[i] - 'a';
     for (int j = 0; j < 26; ++j) {
       if (legal[j][index]) {
