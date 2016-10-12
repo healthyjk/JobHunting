@@ -196,6 +196,23 @@ SUITE(OfferTest)
             }
             return result;
         }
+
+        /*1的个数*/
+        int hammingWeight(uint32_t n) {
+            cout << "test" << endl;
+            int bits[256];
+            memset(bits, 0, 256);
+
+            for (int i = 0; i < 256; ++i) {
+                bits[i] = (i & 0x01) + bits[i/2];
+            }
+
+            unsigned char* nums = (unsigned char*)n;
+
+            int count = bits[nums[0]] + bits[nums[1]] + bits[nums[2]] + bits[nums[3]];
+
+            return count;
+        }
     };
 
     /*小于n的数中1出现的次数测试*/
@@ -246,11 +263,19 @@ SUITE(OfferTest)
     {
         vector<int> a = {26,52,31,45,82,34};
         vector<int> result = EvenReverse(a);
-//        for (int i = 0; i < result.size(); ++i) {
-//            cout << result[i] << endl;
-//        }
+        //        for (int i = 0; i < result.size(); ++i) {
+        //            cout << result[i] << endl;
+        //        }
         vector<int> b = {11,11,31,45,37,17};
         CHECK_ARRAY_EQUAL(b, result, 6);
+        return;
+    }
+
+    /*测试1的个数*/
+    TEST_FIXTURE(Solution, Normal6)
+    {
+        int count = hammingWeight(0);
+        cout << count << endl;
         return;
     }
 }

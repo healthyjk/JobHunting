@@ -126,7 +126,7 @@ SUITE(DemosTemplateTest)
          * that store values 1...n.
          * For example,Given n = 3, your program should return all 5 unique BST's shown below.
          * 此题采用递归的思路比较有技巧，应该学习*/
-
+        /*
         vector<TreeNode*> generateTrees(int n) {
             vector<TreeNode*> result;
             if (n <= 0) return 0;
@@ -152,7 +152,7 @@ SUITE(DemosTemplateTest)
                 result.push_back(NULL);
             }
             return result;
-        }
+        } */
 
     };
 
